@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  api-gateway:
+    build: ./services/api-gateway
+    ports: ["3000:3000"]
+    depends_on: [product-service, user-service]
+    environment:
+      - NODE_ENV=development
+  
+  product-service:
+    build: ./services/product-service
+    ports: ["3001:3001"]
+    volumes:
+      - ./services/product-service:/app
+      - /app/node_modules
+  
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: fashion_store
+      POSTGRES_USER: goddess
+      POSTGRES_PASSWORD: quantum
+    ports: ["5432:5432"]

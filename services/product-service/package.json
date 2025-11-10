@@ -1,0 +1,13 @@
+{
+  "name": "@goddesse/product-service",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "migrate": "knex migrate:latest"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "knex": "^2.5.0",
+    "sqlite3": "^5.1.0"
+  }
+}
