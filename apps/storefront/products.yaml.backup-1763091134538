@@ -1,0 +1,36 @@
+products:
+  - sku: FASH-001
+    title: Summer Maxi Dress
+    price: 49.99
+    sizes: [XS, S, M, L, XL]
+    colours: [Red, Blue, Green]
+    image_url: https://source.unsplash.com/random/400x600/?dress
+    season: Summer
+  - sku: FASH-002
+    title: Leather Jacket
+    price: 89.99
+    sizes: [S, M, L]
+    colours: [Black, Brown]
+    image_url: https://source.unsplash.com/random/400x600/?jacket
+    season: Fall
+  - sku: FASH-003
+    title: Slim Jeans
+    price: 59.99
+    sizes: [28, 30, 32, 34]
+    colours: [Blue, Black]
+    image_url: https://source.unsplash.com/random/400x600/?jeans
+    season: Spring
+  - sku: FASH-004
+    title: Silk Blouse
+    price: 39.99
+    sizes: [XS, S, M]
+    colours: [White, Pink]
+    image_url: https://source.unsplash.com/random/400x600/?blouse
+    season: Spring
+  - sku: FASH-005
+    title: Wool Sweater
+    price: 69.99
+    sizes: [M, L, XL]
+    colours: [Gray, Navy]
+    image_url: https://source.unsplash.com/random/400x600/?sweater
+    season: Winter

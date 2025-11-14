@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build & cache
+/.next
+/dist
+/build
+/out
+.turbo
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs & temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+logs/
+temp/
+
+# Prisma (local dev DB)
+prisma/dev.db
+prisma/*.db*
+
+# Editor & OS junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Done

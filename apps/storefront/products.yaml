@@ -1,0 +1,68 @@
+# AURIX AI FASHION DESIGNS
+# Auto-synced on 2025-11-14T04:38:53.033Z
+
+products:
+  - id: "1763049361284"
+    name: "AURIX Design"
+    price: 129.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049361284.jpg"
+    inStock: true
+    featured: true
+  - id: "1763049378"
+    name: "AURIX Design"
+    price: 129.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049378.jpg"
+    inStock: true
+    featured: true
+  - id: "1763049379"
+    name: "AURIX Design"
+    price: 149.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049379.jpg"
+    inStock: true
+    featured: true
+  - id: "1763049400"
+    name: "AURIX Design"
+    price: 199.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049400.jpg"
+    inStock: true
+    featured: false
+  - id: "1763049415"
+    name: "AURIX Design"
+    price: 129.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049415.jpg"
+    inStock: true
+    featured: false
+  - id: "1763049416"
+    name: "AURIX Design"
+    price: 179.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049416.jpg"
+    inStock: true
+    featured: false
+  - id: "1763049417"
+    name: "AURIX Design"
+    price: 89.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049417.jpg"
+    inStock: true
+    featured: false
+  - id: "1763049423"
+    name: "AURIX Design"
+    price: 99.99
+    description: "AI-generated fashion design"
+    category: "aurix-ai"
+    image: "/aurix-1763049423.jpg"
+    inStock: true
+    featured: false
