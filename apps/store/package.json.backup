@@ -1,0 +1,36 @@
+{
+  "name": "store",
+  "private": true,
+  "scripts": {
+    "risn:sync": "ts-node src/scripts/risn-sync.ts",
+    "risn:push": "ts-node src/scripts/risn-push.ts",
+    "risn:forge": "ts-node src/scripts/risn-forge.ts",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+    "push-product": "risn generate-product --sku $npm_config_sku | curl -X POST -H \"Content-Type: application/json\" -d @- http://localhost:3000/api/products"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prisma": "^6.19.0",
+    "turbo": "^1.13.4",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@trpc/server": "^11.7.1",
+    "class-variance-authority": "^0.7.1",
+    "superjson": "^2.2.5",
+    "zod": "^4.1.12"
+  }
+}

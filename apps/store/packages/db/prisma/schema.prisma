@@ -1,0 +1,407 @@
+// 🏭 FASHION POD - PRISMA SCHEMA FOR THE BUSTLING FACTORY AT 3AM 🏭
+// Where database fields have textures, relationships leave scent trails,
+// and every transaction hums with the electricity of fashion magic
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 🎵 AUDIBLE NOTIFICATIONS ENUMS - The Symphony of Success 🎵
+
+enum UserRole {
+  CUSTOMER   /// 🛎️ Gentle chime - "Welcome back, valued patron"
+  INFLUENCER /// 🔔 Rich tone - "Style icon has entered the building"
+  DESIGNER   /// 🎼 Orchestral swell - "Creator genius detected"
+  ADMIN      /// ⚡ Electric buzz - "Master control engaged"
+}
+
+enum OrderStatus {
+  PENDING    /// ⏳ Soft tick - "Dreams in transit"
+  CONFIRMED  /// ✅ Clear ding - "Magic manifested"
+  PROCESSING /// 🔄 Rhythmic pulse - "Creation in motion"
+  SHIPPED    /// 🚚 Deep hum - "Treasure on its way"
+  DELIVERED  /// 🎉 Triumphant fanfare - "Joy delivered"
+  CANCELLED  /// ❌ Sharp note - "Path diverted"
+}
+
+enum PaymentStatus {
+  UNPAID     /// 💰 Silent anticipation
+  PAID       /// 💸 Satisfying ka-ching
+  REFUNDED   /// 🔄 Gentle reversal chime
+  FAILED     /// ⚠️ Discordant warning
+}
+
+enum ProductTexture {
+  SILK       /// 🪡 Smooth glide, whisper-soft queries
+  COTTON     /// 🧵 Natural breathability, reliable fetches
+  WOOL       /// 🧶 Warmth retention, cozy aggregations
+  DENIM      /// 👖 Sturdy structure, robust relations
+  LACE       /// 🌸 Delicate intricacy, precise filtering
+  LEATHER    /// 🐄 Premium durability, rich joins
+  SYNTHETIC  /// ⚡ Digital smoothness, lightning queries
+  DIGITAL    /// 💻 Ethereal lightness, instant responses
+}
+
+// 👤 USER ENTITY - The Heartbeat of Fashion Dreams 👤
+// Texture: Silk-smooth authentication with cotton-soft personalization
+
+model User {
+  id              String     @id @default(uuid()) /// 🆔 [silk] Primary identifier - smooth UUID flow
+  email           String     @unique /// 📧 [cotton] Natural, breathable contact point
+  password        String     /// 🔒 [digital] Encrypted essence of trust
+  firstName       String     /// 🎭 [silk] First name glides into personalization
+  lastName        String     /// 🎭 [silk] Last name completes the identity tapestry
+  role            UserRole   @default(CUSTOMER) /// 🎵 [audible] Role determines notification symphony
+  avatar          String?    /// 🖼️ [digital] Pixel-perfect self-expression
+  phoneNumber     String?    /// 📱 [cotton] Optional natural communication bridge
+  dateOfBirth     DateTime?  /// 🎂 [silk] Smooth temporal marker of life's journey
+  isActive        Boolean    @default(true) /// ⚡ [digital] Electrical pulse of account vitality
+  emailVerified   Boolean    @default(false) /// ✅ [cotton] Natural verification marker
+  createdAt       DateTime   @default(now()) /// 🕐 [silk] Birth moment of fashion journey
+  updatedAt       DateTime   @updatedAt /// 🔄 [digital] Electrical spark of constant evolution
+
+  // 🌈 SCENT TRAILS - Relationship connections that leave aromatic memories
+  // User ~~sweet perfume~~> Wishlist
+  wishlist        Wishlist?  @relation(name: "UserWishlist", fields: [wishlistId], references: [id]) /// 🌹 [scent trail] Sweet anticipation of desires
+  wishlistId      String?    @unique
+
+  // User ~~musky cologne~~> Cart  
+  cart            Cart?      @relation(name: "UserCart", fields: [cartId], references: [id]) /// 🧔 [scent trail] Musky essence of shopping intent
+  cartId          String?    @unique
+
+  // User ~~fresh linen~~> Orders
+  orders          Order[]    @relation(name: "UserOrders") /// 🧺 [scent trail] Fresh linen scent of new beginnings
+  // User ~~vanilla~~> Reviews
+  reviews         Review[]   @relation(name: "UserReviews") /// 🧁 [scent trail] Vanilla sweetness of shared experiences
+  // User ~~mint~~> Addresses
+  addresses       Address[]  @relation(name: "UserAddresses") /// 🌿 [scent trail] Fresh mint of shipping destinations
+  // User ~~cinnamon~~> Notifications
+  notifications   Notification[] @relation(name: "UserNotifications") /// 🍂 [scent trail] Warm cinnamon of important updates
+
+  @@map("fashion_enthusiasts") /// 🏷️ Table name with factory worker's pride
+  @@index([email], name: "idx_user_email") /// 📚 Index for quick customer retrieval
+}
+
+// 🛍️ WISHLIST ENTITY - The Dream Journal of Fashion Desires 🛍️
+// Texture: Gossamer-light with golden threads of aspiration
+
+model Wishlist {
+  id        String   @id @default(uuid()) /// 🆔 [silk] Ethereal identifier
+  createdAt DateTime @default(now()) /// 🕐 [digital] Moment dreams were captured
+  updatedAt DateTime @updatedAt /// 🔄 [digital] Spark of evolving desires
+
+  // Wishlist ~~jasmine~~> User
+  user      User     @relation(name: "UserWishlist", fields: [userId], references: [id]) /// 🌸 [scent trail] Jasmine essence of personal connection
+  userId    String
+
+  // Wishlist ~~rose petals~~> Products
+  items     WishlistItem[] @relation(name: "WishlistItems") /// 🌹 [scent trail] Rose petal scattering of coveted items
+
+  @@map("dream_collections") /// 🏷️ Factory designation for desire repositories
+}
+
+// 🎀 WISHLIST ITEM - Individual Threads in the Dream Tapestry 🎀
+// Texture: Feather-light with magnetic attraction properties
+
+model WishlistItem {
+  id          String   @id @default(uuid()) /// 🆔 [digital] Instantaneous identifier
+  createdAt   DateTime @default(now()) /// 🕐 [silk] Moment of desire ignition
+  addedAt     DateTime @default(now()) /// ⏰ [digital] Electrical timestamp of addition
+
+  // WishlistItem ~~lavender~~> Wishlist
+  wishlist    Wishlist @relation(name: "WishlistItems", fields: [wishlistId], references: [id]) /// 🌿 [scent trail] Lavender calm of curated collections
+  wishlistId  String
+
+  // WishlistItem ~~sandalwood~~> Product
+  product     Product  @relation(name: "WishlistProduct", fields: [productId], references: [id]) /// 🪵 [scent trail] Sandalwood grounding of concrete desires
+  productId   String
+
+  @@map("cherished_dreams") /// 🏷️ Factory code for treasured aspirations
+  @@unique([wishlistId, productId]) /// 🔗 Unique combination ensures no duplicate dreams
+}
+
+// 🛒 CART ENTITY - The Electric Pulse of Purchase Intent 🛒
+// Texture: Conductive metal with warm rubber grip
+
+model Cart {
+  id         String     @id @default(uuid()) /// 🆔 [digital] Lightning-fast identifier
+  createdAt  DateTime   @default(now()) /// 🕐 [silk] Birth of shopping intention
+  updatedAt  DateTime   @updatedAt /// 🔄 [digital] Electric pulse of constant change
+
+  // Cart ~~ozone~~> User
+  user       User       @relation(name: "UserCart", fields: [userId], references: [id]) /// ⚡ [scent trail] Fresh ozone of electrical connection
+  userId     String
+
+  // Cart ~~citrus~~> Items
+  items      CartItem[] @relation(name: "CartItems") /// 🍋 [scent trail] Zesty citrus of active selections
+
+  @@map("shopping_pulses") /// 🏷️ Factory designation for purchase energy
+}
+
+// 🛍️ CART ITEM - Individual Sparks of Purchase Electricity 🛍️
+// Texture: Smooth plastic with conductive metallic coating
+
+model CartItem {
+  id        String   @id @default(uuid()) /// 🆔 [digital] Instantaneous spark identifier
+  quantity  Int      @default(1) /// 🔢 [cotton] Natural counting mechanism
+  createdAt DateTime @default(now()) /// 🕐 [silk] Moment of purchase intent crystallization
+  updatedAt DateTime @updatedAt /// 🔄 [digital] Electrical pulse of quantity changes
+
+  // CartItem ~~peppermint~~> Cart
+  cart      Cart     @relation(name: "CartItems", fields: [cartId], references: [id]) /// 🌿 [scent trail] Peppermint freshness of active shopping
+  cartId    String
+
+  // CartItem ~~coffee~~> Product
+  product   Product  @relation(name: "CartItemProduct", fields: [productId], references: [id]) /// ☕ [scent trail] Rich coffee aroma of concrete selections
+  productId String
+
+  @@map("purchase_sparks") /// 🏷️ Factory code for active transaction energy
+  @@unique([cartId, productId]) /// 🔗 Unique combination prevents duplicate purchase sparks
+}
+
+// 👕 PRODUCT ENTITY - The Crown Jewel of Fashion Creation 👕
+// Texture: Multi-layered fabric with digital embroidery
+
+model Product {
+  id              String          @id @default(uuid()) /// 🆔 [silk] Smooth identifier flowing through all connections
+  name            String          /// 🏷️ [cotton] Natural product identification
+  description     String          /// 📜 [silk] Smooth narrative of creation story
+  price           Float           /// 💰 [digital] Precise monetary essence
+  compareAtPrice  Float?          /// 💎 [digital] Sparkling comparison value
+  texture         ProductTexture  @default(COTTON) /// 🪡 [texture] Physical manifestation property
+  sku             String          @unique /// 🏷️ [digital] Unique digital barcode identity
+  slug            String          @unique /// 🔗 [digital] Web-friendly navigation essence
+  inStock         Boolean         @default(true) /// ✅ [digital] Electrical availability signal
+  stockQuantity   Int             @default(0) /// 🔢 [cotton] Natural counting of physical inventory
+  weight          Float?          /// ⚖️ [digital] Precise gravitational measurement
+  dimensions      String?         /// 📏 [digital] Spatial coordinates of physical form
+  isFeatured      Boolean         @default(false) /// ⭐ [digital] Luminous spotlight marker
+  isActive        Boolean         @default(true) /// ⚡ [digital] Electrical life pulse
+  createdAt       DateTime        @default(now()) /// 🕐 [silk] Birth moment in the fashion factory
+  updatedAt       DateTime        @updatedAt /// 🔄 [digital] Electrical spark of constant evolution
+
+  // Product ~~vanilla~~> Category
+  category        Category        @relation(name: "ProductCategory", fields: [categoryId], references: [id]) /// 🧁 [scent trail] Vanilla foundation of classification
+  categoryId      String
+
+  // Product ~~cinnamon~~> Brand
+  brand           Brand           @relation(name: "ProductBrand", fields: [brandId], references: [id]) /// 🍂 [scent trail] Warm cinnamon of brand identity
+  brandId         String
+
+  // Product ~~jasmine~~> Images
+  images          ProductImage[]  @relation(name: "ProductImages") /// 🌸 [scent trail] Jasmine beauty of visual representation
+  // Product ~~rose~~> Reviews
+  reviews         Review[]        @relation(name: "ProductReviews") /// 🌹 [scent trail] Rose-scented feedback from fashion patrons
+  // Product ~~sandalwood~~> WishlistItems
+  wishlistItems   WishlistItem[]  @relation(name: "WishlistProduct") /// 🪵 [scent trail] Grounding connection to dream collections
+  // Product ~~coffee~~> CartItems
+  cartItems       CartItem[]      @relation(name: "CartItemProduct") /// ☕ [scent trail] Rich connection to purchase intent
+  // Product ~~lavender~~> OrderItems
+  orderItems      OrderItem[]     @relation(name: "ProductOrderItems") /// 🌿 [scent trail] Calming connection to fulfilled desires
+
+  @@map("fashion_creations") /// 🏷️ Factory designation for masterpieces
+  @@index([name, sku], name: "idx_product_search") /// 📚 Index for rapid product discovery
+  @@index([categoryId], name: "idx_product_category") /// 📚 Category-based navigation index
+}
+
+// 🖼️ PRODUCT IMAGE - Visual Essence Captured in Digital Form 🖼️
+// Texture: Glossy photo paper with pixel-perfect clarity
+
+model ProductImage {
+  id        String   @id @default(uuid()) /// 🆔 [digital] Instantaneous visual identifier
+  url       String   /// 🔗 [digital] Web-accessible visual essence
+  alt       String?  /// 📝 [silk] Smooth descriptive narrative
+  isPrimary Boolean  @default(false) /// ⭐ [digital] Luminous spotlight marker
+  sortOrder Int      @default(0) /// 🔢 [digital] Precise visual arrangement sequence
+  createdAt DateTime @default(now()) /// 🕐 [digital] Moment of visual capture
+
+  // ProductImage ~~jasmine~~> Product
+  product   Product  @relation(name: "ProductImages", fields: [productId], references: [id]) /// 🌸 [scent trail] Jasmine beauty connected to product essence
+  productId String
+
+  @@map("visual_tapestries") /// 🏷️ Factory designation for aesthetic representations
+  @@index([productId], name: "idx_image_product") /// 📚 Index for rapid visual retrieval
+}
+
+// 🏷️ CATEGORY ENTITY - The Organizing Principle of Fashion Kingdoms 🏷️
+// Texture: Structured cardboard with silk ribbon divisions
+
+model Category {
+  id          String    @id @default(uuid()) /// 🆔 [silk] Smooth hierarchical identifier
+  name        String    /// 🏷️ [cotton] Natural classification label
+  slug        String    @unique /// 🔗 [digital] Web-friendly navigation essence
+  description String?   /// 📜 [silk] Smooth narrative of category purpose
+  image       String?   /// 🖼️ [digital] Visual representation of category essence
+  isActive    Boolean   @default(true) /// ⚡ [digital] Electrical life pulse
+  sortOrder   Int       @default(0) /// 🔢 [digital] Precise hierarchical arrangement
+  createdAt   DateTime  @default(now()) /// 🕐 [silk] Birth moment of organizational structure
+  updatedAt   DateTime  @updatedAt /// 🔄 [digital] Electrical spark of constant evolution
+
+  // Category ~~vanilla~~> Products
+  products    Product[] @relation(name: "ProductCategory") /// 🧁 [scent trail] Vanilla foundation supporting product diversity
+  // Category ~~rose~~> Parent
+  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id]) /// 🌹 [scent trail] Rose-scented ancestral connection
+  parentId    String?
+  // Category ~~lavender~~> Children
+  children    Category[] @relation("CategoryHierarchy") /// 🌿 [scent trail] Lavender offspring of hierarchical structure
+
+  @@map("fashion_kingdoms") /// 🏷️ Factory designation for organizational structures
+  @@index([slug], name: "idx_category_slug") /// 📚 Index for rapid category navigation
+}
+
+// 🏢 BRAND ENTITY - The Signature of Fashion Identity 🏢
+// Texture: Premium leather with golden embossed lettering
+
+model Brand {
+  id          String    @id @default(uuid()) /// 🆔 [silk] Smooth identifier of prestige
+  name        String    /// 🏷️ [cotton] Natural brand identification
+  slug        String    @unique /// 🔗 [digital] Web-friendly navigation essence
+  description String?   /// 📜 [silk] Smooth narrative of brand story
+  logo        String?   /// 🖼️ [digital] Visual signature of identity
+  website     String?   /// 🔗 [digital] Web presence connection
+  isActive    Boolean   @default(true) /// ⚡ [digital] Electrical life pulse
+  createdAt   DateTime  @default(now()) /// 🕐 [silk] Birth moment of brand identity
+  updatedAt   DateTime  @updatedAt /// 🔄 [digital] Electrical spark of constant evolution
+
+  // Brand ~~cinnamon~~> Products
+  products    Product[] @relation(name: "ProductBrand") /// 🍂 [scent trail] Warm cinnamon connection to product creations
+
+  @@map("fashion_signatures") /// 🏷️ Factory designation for identity markers
+  @@index([name], name: "idx_brand_name") /// 📚 Index for rapid brand discovery
+}
+
+// 📦 ORDER ENTITY - The Manifestation of Fashion Dreams 📦
+// Texture: Sturdy cardboard box with silk ribbon closure
+
+model Order {
+  id             String       @id @default(uuid()) /// 🆔 [silk] Smooth identifier of completed journey
+  orderNumber    String       @unique /// 🔢 [digital] Unique transaction identifier
+  status         OrderStatus  @default(PENDING) /// 🎵 [audible] Status determines notification symphony
+  totalAmount    Float        /// 💰 [digital] Precise monetary total
+  currency       String       @default("USD") /// 💱 [digital] Universal monetary language
+  paymentStatus  PaymentStatus @default(UNPAID) /// 💳 [digital] Financial transaction status
+  paymentMethod  String?      /// 💳 [digital] Method of monetary exchange
+  notes          String?      /// 📝 [silk] Smooth additional information
+  shippedAt      DateTime?    /// 🚚 [digital] Timestamp of fulfillment
+  deliveredAt    DateTime?    /// 🎉 [digital] Timestamp of joy delivery
+  createdAt      DateTime     @default(now()) /// 🕐 [silk] Birth moment of transaction
+  updatedAt      DateTime     @updatedAt /// 🔄 [digital] Electrical spark of status evolution
+
+  // Order ~~fresh linen~~> User
+  user           User         @relation(name: "UserOrders", fields: [userId], references: [id]) /// 🧺 [scent trail] Fresh linen connection to patron
+  userId         String
+
+  // Order ~~citrus~~> Items
+  items          OrderItem[]  @relation(name: "OrderItems") /// 🍋 [scent trail] Zesty citrus connection to purchased items
+  // Order ~~mint~~> Address
+  shippingAddress Address     @relation(name: "OrderShippingAddress", fields: [shippingAddressId], references: [id]) /// 🌿 [scent trail] Fresh mint connection to destination
+  shippingAddressId String
+  // Order ~~rose~~> Address
+  billingAddress  Address     @relation(name: "OrderBillingAddress", fields: [billingAddressId], references: [id]) /// 🌹 [scent trail] Rose-scented connection to financial home
+
+  @@map("dream_manifestations") /// 🏷️ Factory designation for completed transactions
+  @@index([orderNumber], name: "idx_order_number") /// 📚 Index for rapid order retrieval
+  @@index([userId], name: "idx_order_user") /// 📚 Index for patron-based order discovery
+}
+
+// 📦 ORDER ITEM - Individual Treasures in the Completed Journey 📦
+// Texture: Gift-wrapped with personalized tags
+
+model OrderItem {
+  id        String   @id @default(uuid()) /// 🆔 [digital] Instantaneous transaction identifier
+  quantity  Int      @default(1) /// 🔢 [cotton] Natural counting of treasures
+  price     Float    /// 💰 [digital] Precise individual treasure value
+  createdAt DateTime @default(now()) /// 🕐 [digital] Moment of transaction completion
+
+  // OrderItem ~~lavender~~> Order
+  order     Order    @relation(name: "OrderItems", fields: [orderId], references: [id]) /// 🌿 [scent trail] Lavender connection to completed journey
+  orderId   String
+
+  // OrderItem ~~sandalwood~~> Product
+  product   Product  @relation(name: "ProductOrderItems", fields: [productId], references: [id]) /// 🪵 [scent trail] Sandalwood grounding to physical treasure
+  productId String
+
+  @@map("treasure_manifestations") /// 🏷️ Factory designation for individual completions
+}
+
+// 📍 ADDRESS ENTITY - The Geographic Coordinates of Fashion Delivery 📍
+// Texture: Smooth paper with embossed geographical details
+
+model Address {
+  id          String   @id @default(uuid()) /// 🆔 [silk] Smooth geographical identifier
+  firstName   String   /// 🎭 [silk] First name at destination
+  lastName    String   /// 🎭 [silk] Last name at destination
+  company     String?  /// 🏢 [cotton] Optional business identity
+  address1    String   /// 🏠 [cotton] Primary physical location
+  address2    String?  /// 🏠 [silk] Optional secondary location details
+  city        String   /// 🏙️ [cotton] Urban geographical marker
+  state       String   /// 🏞️ [cotton] Regional geographical marker
+  zipCode     String   /// 🔢 [digital] Precise postal identification
+  country     String   /// 🌍 [cotton] Global geographical marker
+  phone       String?  /// 📱 [digital] Optional communication bridge
+  isDefault   Boolean  @default(false) /// ⭐ [digital] Luminous preference marker
+  createdAt   DateTime @default(now()) /// 🕐 [silk] Birth moment of geographical record
+  updatedAt   DateTime @updatedAt /// 🔄 [digital] Electrical spark of address evolution
+
+  // Address ~~mint~~> User
+  user        User     @relation(name: "UserAddresses", fields: [userId], references: [id]) /// 🌿 [scent trail] Fresh mint connection to patron
+  userId      String
+
+  // Address ~~mint~~> Orders (Shipping)
+  shippingOrders Order[] @relation(name: "OrderShippingAddress") /// 🌿 [scent trail] Fresh mint connection to outgoing treasures
+  // Address ~~rose~~> Orders (Billing)
+  billingOrders  Order[] @relation(name: "OrderBillingAddress") /// 🌹 [scent trail] Rose-scented connection to financial transactions
+
+  @@map("geographical_coordinates") /// 🏷️ Factory designation for location markers
+}
+
+// ⭐ REVIEW ENTITY - The Voice of Fashion Experience ⭐
+// Texture: Parchment with heartfelt ink inscriptions
+
+model Review {
+  id        String   @id @default(uuid()) /// 🆔 [silk] Smooth identifier of shared experience
+  rating    Int      /// ⭐ [digital] Numerical quality assessment (1-5)
+  title     String?  /// 🏷️ [silk] Smooth summary of experience
+  comment   String?  /// 📝 [silk] Detailed narrative of experience
+  isVerified Boolean  @default(false) /// ✅ [digital] Electrical authenticity verification
+  isApproved Boolean  @default(false) /// ✅ [digital] Electrical quality approval
+  helpfulCount Int    @default(0) /// 👍 [digital] Numerical social validation
+  createdAt DateTime @default(now()) /// 🕐 [silk] Birth moment of shared wisdom
+  updatedAt DateTime @updatedAt /// 🔄 [digital] Electrical spark of review evolution
+
+  // Review ~~vanilla~~> User
+  user      User     @relation(name: "UserReviews", fields: [userId], references: [id]) /// 🧁 [scent trail] Vanilla connection to experience patron
+  userId    String
+
+  // Review ~~rose~~> Product
+  product   Product  @relation(name: "ProductReviews", fields: [productId], references: [id]) /// 🌹 [scent trail] Rose-scented connection to reviewed treasure
+
+  @@map("experience_voices") /// 🏷️ Factory designation for shared wisdom
+  @@index([productId, rating], name: "idx_review_product_rating") /// 📚 Index for quality-based product discovery
+}
+
+// 🔔 NOTIFICATION ENTITY - The Whispered Updates of Fashion Life 🔔
+// Texture: Ethereal mist with crystalline chime properties
+
+model Notification {
+  id        String   @id @default(uuid()) /// 🆔 [digital] Instantaneous alert identifier
+  type      String   /// 📢 [digital] Classification of alert essence
+  title     String   /// 🏷️ [silk] Smooth summary of alert content
+  message   String   /// 📝 [silk] Detailed narrative of alert
+  isRead    Boolean  @default(false) /// ✅ [digital] Electrical acknowledgment marker
+  readAt    DateTime? /// 🕐 [digital] Timestamp of acknowledgment
+  createdAt DateTime @default(now()) /// 🕐 [silk] Birth moment of alert
+
+  // Notification ~~cinnamon~~> User
+  user      User     @relation(name: "UserNotifications", fields: [userId], references: [id]) /// 🍂 [scent trail] Warm cinnamon connection to recipient
+  userId    String
+
+  @@map("whispered_updates") /// 🏷️ Factory designation for alert communications
+  @@index([userId, isRead], name: "idx_notification_user_read") /// 📚 Index for personalized alert management
+}
+

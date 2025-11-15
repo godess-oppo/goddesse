@@ -1,0 +1,297 @@
+// 🧠 EVOLVING PRISMA SCHEMA - Learns from Query Patterns
+generator client {
+  provider = 
+// 🧠 EVOLVING PRISMA SCHEMA - Learns from Query Patterns
+generator client {
+ 
+
+// 🧠 EVOLVING PRISMA SCHEMA - Lear
+"prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Intelligent Models with Adaptive Fields
+model User {
+  id                   String    @id @default(uuid())
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+  activities           UserActivity[]
+  aiInteractions       AIInteraction[]
+  
+  // 📈 Intelligence Metrics
+  createdAt            DateTime  @default(now())
+  lastActive           DateTime  @updatedAt
+  intelligenceScore    Float     @default(0.1) // 🧠 Confidence 
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+  activities           UserActivity[]
+  aiInteractions       AIInteraction[]
+  
+  // 📈 Intelligence Metrics
+  createdAt            DateTime  @default(now())
+  lastActive           DateTime  @updatedAt
+  intelligenceScore    Float     @default(0.1
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+  activities           UserActivity[]
+  aiInteractions       AIInteraction[]
+  
+  // 📈 Intelligence Metrics
+  createdAt            DateTime  @default(now())
+  lastActive           DateTime  @updatedAt
+  intelligenceScore   
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+  activities           UserActivity[]
+  aiInteractions       AIInteraction[]
+  
+  // 📈 Intelligence Metrics
+  createdAt
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+  activities           UserActivity[]
+  ai
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self-Organizing Relationships
+  sessions             Session[]
+ 
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  // 🌱 Self
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query performance data
+  
+  //
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+  queryOptimization    Json?     // ⚡ Learned query
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution  Json?     // 🔄 Tracks preference drift over time
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?     // 📊 Stores user interaction patterns
+  preferenceEvolution 
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based on usage patterns
+  behavioralSignature  Json?    
+
+  email                String    @unique
+  name                 String?
+  // 🧬 Adaptive Fields - Evolve based
+in learned patterns
+}
+
+model Session {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [
+ 
+id])
+  // 🧠 Adaptive Session Intelligence
+  interactionMap    Json?    // 🗺️ Maps user behavior during session
+  optimizationCache Json?    // ⚡ Caches learned performance patterns
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+}
+
+model UserActivity {
+  
+  // 🧠 Adaptive Session Intelligence
+  interactionMap    Json?    // 🗺️ Maps user behavior during session
+  optimizationCache Json?    // ⚡ Caches learned performance patterns
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+}
+
+model User
+
+  // 🧠 Adaptive Session Intelligence
+  interactionMap    Json?    // 🗺️ Maps user behavior during session
+  optimizationCache Json?    // ⚡ Caches learned performance patterns
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+
+  // 🧠 Adaptive Session Intelligence
+  interactionMap    Json?    // 🗺️ Maps user behavior during session
+  optimizationCache Json?    // ⚡
+
+  // 🧠 Adaptive Session Intelligence
+  interaction
+id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [
+  userId      String
+  user        User     @relation(fields: [userId], references:
+
+ 
+id])
+  action      String   // 🎯 What the user did
+  context     Json     // 🌐 Environmental factors
+  performance Json?    // ⚡ System response metrics
+  timestamp   DateTime @default(now())
+  
+  @@index([userId, timestamp]) // 📊 Auto-optimized 
+  action      String   // 🎯 What the user did
+  context     Json     // 🌐 Environmental factors
+  performance Json?    // ⚡ System response metrics
+  timestamp   DateTime @default(now())
+  
+  @@
+
+  action      String   // 🎯 What the user did
+  context     Json     // 🌐 Environmental factors
+  performance Json?
+
+  action      String   // 🎯 What the user did
+  context    
+
+  action      String  
+for temporal analysis
+}
+
+model AIInteraction {
+  
+}
+
+model
+id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [
+  userId      String
+  user        User     @relation(fields: [userId], references
+
+  userId
+id])
+  // 🤖 AI-Agent Communication Intelligence
+  agentType   String   // 🕹️ Which AI agent was involved
+  input       Json     // 📥 What was sent to the agent
+  output      Json     // 📤 What the agent responded with
+  feedback    Json?    // 👍 User response to AI output
+  confidence  Float    // 🧠 Agent
+  // 🤖 AI-Agent Communication Intelligence
+  agentType   String   // 🕹️ Which AI agent was involved
+  input       Json     // 📥 What was sent to the agent
+  output      Json     // 📤 What the agent responded with
+  feedback    Json?    // 👍 User response to AI output
+  confidence  Float
+
+  // 🤖 AI-Agent Communication Intelligence
+  agentType   String   // 🕹️ Which AI agent was involved
+  input       Json     // 📥 What was sent to the agent
+  output      Json     // 📤 What the agent responded with
+  feedback   
+
+  // 🤖 AI-Agent Communication Intelligence
+  agentType   String   // 🕹️ Which AI agent was involved
+  input       Json     // 📥 What was sent to the agent
+  output
+
+  // 🤖 AI-Agent Communication Intelligence
+  agentType   String   // 🕹️ Which AI agent
+
+  // 🤖 AI-Agent Communication Intelligence
+'s confidence in response
+  processingTime Int   // ⏱️ How long the interaction took
+  timestamp   DateTime @default(now())
+  
+  @@index([userId, agentType, timestamp])
+}
+
+model SchemaEvolution {
+  id              String   @id @default(uuid())
+  modelName       String   // 🏷️ Which model is evolving
+  fieldChanges    Json     // 🧬 Record of field modifications
+  relationshipOptimizations Json // 🔗 Learned relationship improvements
+  performanceMetrics Json   // ⚡ Query performance improvements
+  evolutionScore  Float    // 📈 Confidence in this evolution
+  appliedAt       DateTime @default(now())
+  
+  @@index([modelName, appliedAt])
+}
+
+// 🌟 AUTO-GENERATED INDEXES FROM TRAFFIC ANALYSIS
+// These indexes evolve based on production query patterns
+// Index evolution is handled by the intelligence layer
+
+model QueryPattern {
+  id            String   @id @default(uuid())
+  patternHash   String   @unique // 🔢 Unique identifier for query pattern
+  frequency     Int      // 📊 How often this pattern occurs
+  averageLatency Float   // ⏱️ Typical response time
+  optimization  Json?    // ⚡ Applied optimizations
+  lastSeen      DateTime @default(now())
+  
+  @@index([frequency, averageLatency]) // 📊 Optimized for performance analysis
+}
