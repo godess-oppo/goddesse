@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-neutral-100 text-neutral-900 antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Fashion – Category Grid</title>
+  <!-- Tailwind CDN (development) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Inject our custom design‑system tokens into Tailwind at runtime
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0B6E4F',
+            accent: '#F2C88B',
+            neutral: {
+              100: '#FFFFFF',
+              900: '#111111',
+            },
+          },
+          spacing: { base: '8px' },
+          borderRadius: { DEFAULT: '8px' },
+          boxShadow: { elev1: '0 2px 6px rgba(17,17,17,0.03)' },
+          fontSize: {
+            xs: ['12px', { lineHeight: '16px' }],
+            sm: ['14px', { lineHeight: '20px' }],
+            base: ['16px', { lineHeight: '24px' }],
+            lg: ['20px', { lineHeight: '28px' }],
+            xl: ['28px', { lineHeight: '36px' }],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4">
+
+  <!-- --------------------------------------------------------------
+       1️⃣ Header – brand + filter + sort
+       -------------------------------------------------------------- -->
+  <header class="mb-6">
+    <h1 class="text-xl font-bold text-primary mb-4">Midnight Velvet Collection</h1>
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2" id="filter-bar">
+        <!-- chips will be injected by script.js -->
+      </div>
+
+      <!-- Sort -->
+      <div>
+        <label for="sort-select" class="sr-only">Sort by</label>
+        <select id="sort-select" class="border border-neutral-300 rounded-[var(--radius)] p-2 focus-visible:ring-2 focus-visible:ring-primary">
+          <option value="editorial">Editorial Picks</option>
+          <option value="traced">Most‑Traced</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- --------------------------------------------------------------
+       2️⃣ Product grid (skeletons + real cards)
+       -------------------------------------------------------------- -->
+  <main>
+    <section id="product-grid" class="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+      <!-- Cards (or skeletons) will be injected here -->
+    </section>
+
+    <!-- Infinite‑scroll sentinel -->
+    <div id="infinite-sentinel" class="h-1"></div>
+
+    <!-- Fallback Load More button (hidden by default) -->
+    <button id="load-more"
+            class="hidden mt-4 w-full py-2 bg-primary text-neutral-100 rounded-[var(--radius)] hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary">
+      Load more
+    </button>
+
+    <!-- Accessible live region for loading status -->
+    <div aria-live="polite" class="sr-only" id="loading-status"></div>
+  </main>
+
+  <!-- --------------------------------------------------------------
+       3️⃣ Sticky bundle‑suggestion micro‑card
+       -------------------------------------------------------------- -->
+  <aside id="bundle-card" aria-hidden="true">
+    <span class="text-sm font-medium">Complete the look</span>
+    <button id="bundle-cta"
+            class="bg-accent text-neutral-100 px-3 py-1 rounded-[var(--radius)] hover:bg-accent/90 focus-visible:ring-2 focus-visible:ring-primary">
+      Add 2 more items →
+    </button>
+    <button id="bundle-close" class="ml-auto text-neutral-900 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary">✕</button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

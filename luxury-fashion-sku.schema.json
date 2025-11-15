@@ -1,0 +1,573 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/luxury-fashion-sku.json",
+  "title": "Luxury Fashion SKU",
+  "description": "Modular product schema for luxury‑fashion stock‑keeping units (SKUs) with AI‑generated texture, mood and sustainability metadata.",
+  "type": "object",
+  "required": ["sku", "brand", "productCore", "variants"],
+  "additionalProperties": false,
+
+  /* ------------------------------------------------------------------
+     1️⃣ Core product information (immutable design attributes)
+     ------------------------------------------------------------------ */
+  "allOf": [
+    { "$ref": "#/$defs/ProductCoreWrapper" },
+    { "$ref": "#/$defs/VariantWrapper" },
+    { "$ref": "#/$defs/AITaggingWrapper" },
+    { "$ref": "#/$defs/SustainabilityWrapper" },
+    { "$ref": "#/$defs/MediaWrapper" }
+  ],
+
+  "$defs": {
+
+    /* ------------------------------------------------------------------
+       1️⃣ Product core (name, category, season, material, etc.)
+       ------------------------------------------------------------------ */
+    "ProductCoreWrapper": {
+      "type": "object",
+      "properties": {
+        "productCore": { "$ref": "#/$defs/ProductCore" }
+      },
+      "required": ["productCore"],
+      "additionalProperties": false
+    },
+
+    "ProductCore": {
+      "type": "object",
+      "description": "Immutable attributes that describe the design concept.",
+      "required": [
+        "name",
+        "category",
+        "season",
+        "launchYear",
+        "designer",
+        "materialComposition"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Marketing name of the product (e.g., “Midnight Velvet Blazer”)."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Ready‑to‑Wear", "Haute Couture", "Accessories", "Footwear", "Jewelry"],
+          "description": "High‑level product family."
+        },
+        "subCategory": {
+          "type": "string",
+          "description": "More granular classification (e.g., “Tailored Blazer”)."
+        },
+        "season": {
+          "type": "string",
+          "enum": ["Spring/Summer", "Fall/Winter", "Resort", "Pre‑Fall", "Cruise"],
+          "description": "Fashion season the piece belongs to."
+        },
+        "launchYear": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100,
+          "description": "Year the collection was launched."
+        },
+        "designer": {
+          "type": "string",
+          "description": "Name of the lead designer or creative director."
+        },
+        "materialComposition": {
+          "$ref": "#/$defs/MaterialComposition"
+        },
+        "careInstructions": {
+          "type": "string",
+          "description": "Standard care label text."
+        },
+        "countryOfOrigin": {
+          "type": "string",
+          "description": "Country where the item was manufactured."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "MaterialComposition": {
+      "type": "array",
+      "description": "List of material percentages, ordered by dominance.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["material", "percentage"],
+        "properties": {
+          "material": {
+            "type": "string",
+            "description": "e.g., “Silk”, “Cashmere”, “Recycled Polyester”."
+          },
+          "percentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Weight % of the material in the final garment."
+          },
+          "origin": {
+            "type": "string",
+            "description": "Country or region where the raw material was sourced."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    /* ------------------------------------------------------------------
+       2️⃣ Variant block – size, colour, price, inventory, etc.
+       ------------------------------------------------------------------ */
+    "VariantWrapper": {
+      "type": "object",
+      "properties": {
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/Variant" }
+        }
+      },
+      "required": ["variants"],
+      "additionalProperties": false
+    },
+
+    "Variant": {
+      "type": "object",
+      "description": "A sellable combination of size, colour, and optional customisation.",
+      "required": ["sku", "size", "colour", "price", "stock"],
+      "properties": {
+        "sku": {
+          "type": "string",
+          "pattern": "^[A-Z0-9_-]+$",
+          "description": "Unique identifier for this exact variant."
+        },
+        "size": { "$ref": "#/$defs/Size" },
+        "colour": { "$ref": "#/$defs/Colour" },
+        "price": {
+          "type": "object",
+          "required": ["amount", "currency"],
+          "properties": {
+            "amount": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Net price (ex‑VAT)."
+            },
+            "currency": {
+              "type": "string",
+              "enum": ["USD", "EUR", "GBP", "JPY", "CNY"],
+              "default": "USD"
+            },
+            "priceTier": {
+              "type": "string",
+              "enum": ["Retail", "Wholesale", "VIP"],
+              "description": "Pricing tier for the SKU."
+            }
+          },
+          "additionalProperties": false
+        },
+        "stock": {
+          "type": "object",
+          "required": ["available", "onHold"],
+          "properties": {
+            "available": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Units physically in the warehouse."
+            },
+            "onHold": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Units reserved for pending orders."
+            },
+            "reorderThreshold": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "When available ≤ threshold, a replenishment alert is raised."
+            }
+          },
+          "additionalProperties": false
+        },
+        "customization": {
+          "type": "object",
+          "description": "Optional monogramming, embossing, etc.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["Monogram", "Emboss", "LaserEtch", "None"]
+            },
+            "value": {
+              "type": "string",
+              "maxLength": 30
+            }
+          },
+          "required": ["type"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Size": {
+      "type": "object",
+      "description": "Standardised size system – can be extended per brand.",
+      "required": ["system", "value"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "enum": ["US", "EU", "UK", "JP", "CM", "Custom"],
+          "description": "Size measurement system."
+        },
+        "value": {
+          "type": "string",
+          "description": "The size label (e.g., “38”, “M”, “44‑2”)."
+        },
+        "measurementCm": {
+          "type": "object",
+          "description": "Optional precise body measurements.",
+          "properties": {
+            "bust": { "type": "number", "minimum": 0 },
+            "waist": { "type": "number", "minimum": 0 },
+            "hip": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Colour": {
+      "type": "object",
+      "description": "Colour data – human readable + machine‑readable (hex / Pantone).",
+      "required": ["name", "hex"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Designer‑approved colour name (e.g., “Midnight Sapphire”)."
+        },
+        "hex": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6})$",
+          "description": "Hexadecimal representation."
+        },
+        "pantone": {
+          "type": "string",
+          "description": "Pantone code if applicable."
+        },
+        "rgb": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0, "maximum": 255 },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "RGB triplet."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ------------------------------------------------------------------
+       3️⃣ AI‑generated tagging (texture, mood, sustainability)
+       ------------------------------------------------------------------ */
+    "AITaggingWrapper": {
+      "type": "object",
+      "properties": {
+        "aiTags": { "$ref": "#/$defs/AITags" }
+      },
+      "required": ["aiTags"],
+      "additionalProperties": false
+    },
+
+    "AITags": {
+      "type": "object",
+      "description": "Metadata produced by an AI model (e.g., CLIP, ViT, custom fine‑tuned net).",
+      "properties": {
+        "texture": {
+          "$ref": "#/$defs/TextureTag"
+        },
+        "mood": {
+          "$ref": "#/$defs/MoodTag"
+        },
+        "sustainability": {
+          "$ref": "#/$defs/SustainabilityTag"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the AI inference was performed."
+        },
+        "modelVersion": {
+          "type": "string",
+          "description": "Identifier of the model / checkpoint used."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "TextureTag": {
+      "type": "object",
+      "description": "Tactile and visual texture descriptors.",
+      "required": ["labels", "confidence"],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "silky",
+              "smooth",
+              "matte",
+              "glossy",
+              "velvet",
+              "suede",
+              "ribbed",
+              "knitted",
+              "embossed",
+              "metallic",
+              "crinkled",
+              "feather‑light",
+              "heavy‑weight"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Average confidence across the selected labels."
+        },
+        "rawScores": {
+          "type": "object",
+          "description": "Optional map of label → score for downstream ranking.",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "MoodTag": {
+      "type": "object",
+      "description": "Emotional / narrative tags that the AI associates with the piece.",
+      "required": ["labels", "confidence"],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "elegant",
+              "dramatic",
+              "romantic",
+              "minimalist",
+              "edgy",
+              "playful",
+              "sophisticated",
+              "luxurious",
+              "avant‑garde",
+              "timeless",
+              "bohemian",
+              "street‑wear"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rawScores": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "SustainabilityTag": {
+      "type": "object",
+      "description": "AI‑derived sustainability signals (e.g., “recycled”, “low‑water”, “organic”).",
+      "required": ["labels", "confidence"],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "recycled",
+              "organic",
+              "low‑water",
+              "carbon‑neutral",
+              "vegan",
+              "cruelty‑free",
+              "upcycled",
+              "biodegradable",
+              "fair‑trade",
+              "traceable"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rawScores": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ------------------------------------------------------------------
+       4️⃣ Sustainability metrics (hard numbers, certifications)
+       ------------------------------------------------------------------ */
+    "SustainabilityWrapper": {
+      "type": "object",
+      "properties": {
+        "sustainabilityMetrics": { "$ref": "#/$defs/SustainabilityMetrics" }
+      },
+      "required": ["sustainabilityMetrics"],
+      "additionalProperties": false
+    },
+
+    "SustainabilityMetrics": {
+      "type": "object",
+      "description": "Quantitative data that can be displayed on product pages or used for compliance.",
+      "properties": {
+        "carbonFootprintKgCO2e": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Lifecycle GHG emissions per unit."
+        },
+        "waterUsageLiters": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total water consumed to produce one unit."
+        },
+        "recycledContentPct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percent of the garment that is post‑consumer recycled material."
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "authority", "validFrom"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g., “Global Recycle Standard”."
+              },
+              "authority": {
+                "type": "string",
+                "description": "Issuing body (e.g., “GOTS”, “OEKO‑Tex”)."
+              },
+              "validFrom": {
+                "type": "string",
+                "format": "date",
+                "description": "Start of certification validity."
+              },
+              "validTo": {
+                "type": "string",
+                "format": "date",
+                "description": "End of certification validity (optional)."
+              },
+              "certificateId": {
+                "type": "string",
+                "description": "Unique identifier on the certifying body’s registry."
+              }
+            },
+            "additionalProperties": false
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ------------------------------------------------------------------
+       5️⃣ Media assets (images, videos, 3‑D models)
+       ------------------------------------------------------------------ */
+    "MediaWrapper": {
+      "type": "object",
+      "properties": {
+        "media": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/MediaAsset" }
+        }
+      },
+      "required": ["media"],
+      "additionalProperties": false
+    },
+
+    "MediaAsset": {
+      "type": "object",
+      "required": ["type", "url"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["image", "video", "3d-model", "lookbook"],
+          "description": "Kind of asset."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Publicly reachable URL (CDN preferred)."
+        },
+        "altText": {
+          "type": "string",
+          "description": "Accessibility description – can be AI‑generated."
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Display order in the product gallery."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Optional vendor‑specific fields (e.g., resolution, duration).",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ------------------------------------------------------------------
+       6️⃣ Top‑level identifiers that are always present
+       ------------------------------------------------------------------ */
+    "sku": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_-]+$",
+      "description": "Master SKU for the product line (e.g., “MVB‑2025‑BLZ”)."
+    },
+
+    "brand": {
+      "type": "object",
+      "required": ["name", "logoUrl"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Luxury brand name."
+        },
+        "logoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the brand’s logo (used in UI overlays)."
+        },
+        "heritageYear": {
+          "type": "integer",
+          "minimum": 1800,
+          "description": "Year the house was founded."
+        }
+      },
+      "additionalProperties": false
+    }
+
+  }   /* end $defs */
+}

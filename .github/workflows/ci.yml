@@ -1,18 +1,49 @@
-name: Quantum CI
-on: [push, pull_request]
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
 
 jobs:
-  test-collapsed-apps:
+  test-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - name: Detect Materialized Apps
-        run: |
-          for app in superposition/apps/*/package.json; do
-            if [ -f "$app" ]; then
-              app_name=$(dirname "$app" | xargs basename)
-              pnpm install --filter @goddesse/$app_name
-              pnpm test --filter @goddesse/$app_name
-            fi
-          done
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: cd frontend && npm ci
+      - run: cd frontend && npm test
+      - run: cd frontend && npm run build
+
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: cd backend/api-gateway && npm ci
+      - run: cd backend/api-gateway && npm test
+
+  test-ai-services:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: cd ai-services/chatgpt-integration && pip install -r requirements.txt
+      - run: cd ai-services/chatgpt-integration && pytest
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run security scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'

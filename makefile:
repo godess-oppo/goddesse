@@ -1,0 +1,27 @@
+.PHONY: clean clean-all optimize
+
+clean:
+	@echo "🧹 Basic cleanup..."
+	find . -name "node_modules" -type d -prune -exec rm -rf {} + 2>/dev/null || true
+	find . -name ".next" -type d -prune -exec rm -rf {} + 2>/dev/null || true
+	find . -name "__pycache__" -type d -prune -exec rm -rf {} + 2>/dev/null || true
+	find . -name "*.log" -delete 2>/dev/null || true
+
+clean-all:
+	@echo "🔥 Deep cleanup..."
+	find . -name "node_modules" -type d -prune -exec rm -rf {} +
+	find . -name ".next" -type d -prune -exec rm -rf {} +
+	find . -name "dist" -type d -prune -exec rm -rf {} +
+	find . -name "build" -type d -prune -exec rm -rf {} +
+	find . -name "__pycache__" -type d -prune -exec rm -rf {} +
+	find . -name ".pytest_cache" -type d -prune -exec rm -rf {} +
+	find . -name "*.log" -delete
+	find . -name "*.tmp" -delete
+	find . -name ".DS_Store" -delete
+	pnpm store prune
+
+optimize:
+	@echo "⚡ Optimizing project..."
+	$(MAKE) clean-all
+	pnpm install
+	echo "✅ Project optimized!"

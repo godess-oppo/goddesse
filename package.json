@@ -1,9 +1,23 @@
 {
-  "name": "goddesse-quantum",
-  "version": "1.0.0",
+  "name": "goddesse-ai-platform",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "backend/*",
+    "ai-services/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "pnpm -r --parallel dev",
-    "materialize": "node scripts/organize.js"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "clean": "turbo clean",
+    "docker:dev": "docker-compose up",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0"
   }
 }

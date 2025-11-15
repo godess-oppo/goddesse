@@ -1,5 +1,0 @@
-packages:
-  - 'packages/*'
-  - 'superposition/apps/*'
-  - 'platform'
-  - 'services'

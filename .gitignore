@@ -1,44 +1,59 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
-node_modules
-.pnp
-.pnp.js
+node_modules/
+*.pyc
+__pycache__/
+venv/
+.venv/
 
-# Local env files
+# Environment variables
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
-# Testing
-coverage
-
-# Turbo
-.turbo
-
-# Vercel
-.vercel
-
-# Build Outputs
-.next/
-out/
-build
-dist
-
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Misc
-.DS_Store
-*.pem
-.next/
+# Build outputs
 dist/
 build/
+*.egg-info/
+.next/
+out/
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Logs
 *.log
-*.tmp
-.cache/
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.coverage
+*.coverage
+.pytest_cache/
+
+# ML Models
+*.pkl
+*.h5
+*.joblib
+*.pt
+*.pth
+weights/
+
+# Data
+*.csv
+*.parquet
+datasets/raw/*
+datasets/processed/*
+!datasets/raw/.gitkeep
+!datasets/processed/.gitkeep
+
+# Docker
+.docker/

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   1️⃣ Design‑system custom properties (fallback for non‑Tailwind use)
+   ------------------------------------------------------------------ */
+:root {
+  --color-primary: #0B6E4F;
+  --color-accent: #F2C88B;
+  --color-neutral-100: #FFFFFF;
+  --color-neutral-900: #111111;
+  --shadow-elev-1: rgba(17,17,17,0.03);
+  --radius: 8px;
+  --space: 8px;
+}
+
+/* ------------------------------------------------------------------
+   2️⃣ Skeleton placeholder (respect reduced‑motion)
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton {
+    @apply animate-pulse bg-neutral-100;
+  }
+}
+
+/* ------------------------------------------------------------------
+   3️⃣ Hover overlay (desktop) – editorial flourish
+   ------------------------------------------------------------------ */
+.product-card {
+  @apply relative overflow-hidden rounded-[var(--radius)] bg-neutral-100;
+}
+.product-card .overlay {
+  @apply absolute inset-0 flex flex-col justify-end p-2 text-neutral-100 bg-black/45 opacity-0 transition-opacity duration-150;
+}
+.product-card:hover .overlay,
+.product-card:focus-within .overlay {
+  @apply opacity-100;
+}
+.product-card .curator {
+  @apply text-sm italic;
+}
+.product-card .provenance {
+  @apply inline-block mt-1 px-2 py-0.5 bg-primary/80 rounded-[var(--radius)] text-xs;
+}
+
+/* ------------------------------------------------------------------
+   4️⃣ Sticky bundle‑suggestion micro‑card
+   ------------------------------------------------------------------ */
+#bundle-card {
+  @apply hidden md:flex items-center gap-2 p-3 bg-neutral-100 rounded-[var(--radius)] shadow-elev1 fixed bottom-4 left-4 z-30;
+}
+
+/* ------------------------------------------------------------------
+   5️⃣ Focus ring (accessible)
+   ------------------------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

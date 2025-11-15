@@ -1,0 +1,14 @@
+{
+  "name": "luxury-grid",
+  "version": "1.0.0",
+  "description": "Luxury‑fashion category grid with AI tags, infinite scroll and bundle suggestion",
+  "main": "server/server.js",
+  "scripts": {
+    "dev": "node server/server.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

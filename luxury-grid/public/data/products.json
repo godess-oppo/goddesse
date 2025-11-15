@@ -1,0 +1,705 @@
+[
+  {
+    "sku": "MVB-2025-BLZ-001",
+    "name": "Midnight Velvet Blazer",
+    "price": 2450,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/1/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 70 },
+      { "material": "Cashmere", "percentage": 30 }
+    ],
+    "curatorSentence": "A whisper of midnight silk, inspired by the Venetian canals.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["velvet", "smooth"],
+      "mood": ["elegant", "dramatic"],
+      "sustainability": ["recycled"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 12.4,
+      "waterUsageLiters": 45,
+      "recycledContentPct": 15
+    }
+  },
+  {
+    "sku": "MVB-2025-BLZ-002",
+    "name": "Saffron Silk Scarf",
+    "price": 720,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/2/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 100 }
+    ],
+    "curatorSentence": "Sun‑kissed silk that drapes like a warm sunrise.",
+    "provenance": "French‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "light"],
+      "mood": ["romantic", "playful"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 5.2,
+      "waterUsageLiters": 30,
+      "recycledContentPct": 0
+    }
+  },
+  {
+    "sku": "MVB-2025-BLZ-003",
+    "name": "Obsidian Leather Tote",
+    "price": 1890,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/3/600/800",
+    "materialComposition": [
+      { "material": "Recycled Leather", "percentage": 100 }
+    ],
+    "curatorSentence": "Sleek, matte leather that tells a story of rebirth.",
+    "provenance": "German‑crafted • 2025",
+    "aiTags": {
+      "texture": ["matte", "smooth"],
+      "mood": ["minimalist", "sophisticated"],
+      "sustainability": ["recycled", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 8.1,
+      "waterUsageLiters": 20,
+      "recycledContentPct": 100
+    }
+  },
+
+  /* ------------------------------------------------------------------
+     Add more items up to 30 – you can copy‑paste the block above and
+     just change the seed number, sku and name. For brevity only three
+     are shown here. The UI works with any length of array.
+     ------------------------------------------------------------------ */
+  {
+    "sku": "MVB-2025-BLZ-004",
+    "name": "Ivory Cashmere Sweater",
+    "price": 1320,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/4/600/800",
+    "materialComposition": [
+      { "material": "Cashmere", "percentage": 100 }
+    ],
+    "curatorSentence": "Cloud‑soft cashmere that feels like a gentle embrace.",
+    "provenance": "Scottish‑knit • 2025",
+    "aiTags": {
+      "texture": ["soft", "knitted"],
+      "mood": ["timeless", "luxurious"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 9.5,
+      "waterUsageLiters": 25,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-005",
+    "name": "Midnight Sapphire Heels",
+    "price": 1580,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/5/600/800",
+    "materialComposition": [
+      { "material": "Vegan Leather", "percentage": 100 }
+    ],
+    "curatorSentence": "Stiletto silhouette in deep sapphire, cruelty‑free glamour.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["glossy", "smooth"],
+      "mood": ["edgy", "dramatic"],
+      "sustainability": ["vegan", "recycled"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 6.8,
+      "waterUsageLiters": 15,
+      "recycledContentPct": 40
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-006",
+    "name": "Gold‑Threaded Belt",
+    "price": 420,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/6/600/800",
+    "materialComposition": [
+      { "material": "Leather", "percentage": 80 },
+      { "material": "Gold Thread", "percentage": 20 }
+    ],
+    "curatorSentence": "A thin line of gold that cinches elegance.",
+    "provenance": "French‑artisan • 2025",
+    "aiTags": {
+      "texture": ["smooth", "metallic"],
+      "mood": ["luxurious", "sophisticated"],
+      "sustainability": ["fair‑trade"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 4.2,
+      "waterUsageLiters": 10,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-007",
+    "name": "Emerald Velvet Dress",
+    "price": 3890,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/7/600/800",
+    "materialComposition": [
+      { "material": "Velvet", "percentage": 100 }
+    ],
+    "curatorSentence": "Emerald depth that catches the light like a forest at dusk.",
+    "provenance": "Italian‑couture • 2025",
+    "aiTags": {
+      "texture": ["velvet", "heavy‑weight"],
+      "mood": ["dramatic", "romantic"],
+      "sustainability": ["low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 14.7,
+      "waterUsageLiters": 55,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-008",
+    "name": "Pearl‑Laced Clutch",
+    "price": 950,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/8/600/800",
+    "materialComposition": [
+      { "material": "Vegan Leather", "percentage": 90 },
+      { "material": "Pearl", "percentage": 10 }
+    ],
+    "curatorSentence": "A whisper of pearls that glimmer on midnight skin.",
+    "provenance": "Spanish‑artisan • 2025",
+    "aiTags": {
+      "texture": ["glossy", "smooth"],
+      "mood": ["elegant", "playful"],
+      "sustainability": ["vegan", "recycled"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 5.9,
+      "waterUsageLiters": 12,
+      "recycledContentPct": 30
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-009",
+    "name": "Sable Fur Collar",
+    "price": 1120,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/9/600/800",
+    "materialComposition": [
+      { "material": "Recycled Faux Fur", "percentage": 100 }
+    ],
+    "curatorSentence": "Luxurious faux fur that feels like a midnight whisper.",
+    "provenance": "Polish‑crafted • 2025",
+    "aiTags": {
+      "texture": ["soft", "fluffy"],
+      "mood": ["cozy", "sophisticated"],
+      "sustainability": ["recycled", "vegan"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 7.3,
+      "waterUsageLiters": 18,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-010",
+    "name": "Obsidian Silk Tie",
+    "price": 380,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/10/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 100 }
+    ],
+    "curatorSentence": "A sleek silk tie that adds a dark edge to any suit.",
+    "provenance": "Italian‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["edgy", "minimalist"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 4.8,
+      "waterUsageLiters": 22,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-011",
+    "name": "Cobalt Denim Jacket",
+    "price": 1650,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/11/600/800",
+    "materialComposition": [
+      { "material": "Organic Denim", "percentage": 100 }
+    ],
+    "curatorSentence": "Denim reborn – sturdy, sustainable, and strikingly blue.",
+    "provenance": "US‑crafted • 2025",
+    "aiTags": {
+      "texture": ["ribbed", "heavy‑weight"],
+      "mood": ["edgy", "street‑wear"],
+      "sustainability": ["organic", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 10.2,
+      "waterUsageLiters": 70,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-012",
+    "name": "Ivory Lace Gown",
+    "price": 4890,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/12/600/800",
+    "materialComposition": [
+      { "material": "Lace", "percentage": 100 }
+    ],
+    "curatorSentence": "Delicate lace that drapes like moonlit clouds.",
+    "provenance": "French‑couture • 2025",
+    "aiTags": {
+      "texture": ["delicate", "light"],
+      "mood": ["romantic", "timeless"],
+      "sustainability": ["fair‑trade"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 13.5,
+      "waterUsageLiters": 40,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-013",
+    "name": "Sable Suede Loafers",
+    "price": 1240,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/13/600/800",
+    "materialComposition": [
+      { "material": "Recycled Suede", "percentage": 100 }
+    ],
+    "curatorSentence": "Suede that feels like a soft whisper underfoot.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["suede", "soft"],
+      "mood": ["minimalist", "sophisticated"],
+      "sustainability": ["recycled", "vegan"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 6.4,
+      "waterUsageLiters": 14,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-014",
+    "name": "Gold‑Threaded Silk Shirt",
+    "price": 1380,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/14/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 90 },
+      { "material": "Gold Thread", "percentage": 10 }
+    ],
+    "curatorSentence": "A silk shirt threaded with gold – understated opulence.",
+    "provenance": "Japanese‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["elegant", "luxurious"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 7.9,
+      "waterUsageLiters": 28,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-015",
+    "name": "Obsidian Leather Boots",
+    "price": 2190,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/15/600/800",
+    "materialComposition": [
+      { "material": "Recycled Leather", "percentage": 100 }
+    ],
+    "curatorSentence": "Boots that stride with confidence and conscience.",
+    "provenance": "German‑crafted • 2025",
+    "aiTags": {
+      "texture": ["matte", "smooth"],
+      "mood": ["edgy", "minimalist"],
+      "sustainability": ["recycled", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 9.1,
+      "waterUsageLiters": 22,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-016",
+    "name": "Pearl‑Embellished Headband",
+    "price": 310,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/16/600/800",
+    "materialComposition": [
+      { "material": "Vegan Leather", "percentage": 95 },
+      { "material": "Pearl", "percentage": 5 }
+    ],
+    "curatorSentence": "A delicate crown of pearls for the modern muse.",
+    "provenance": "Italian‑artisan • 2025",
+    "aiTags": {
+      "texture": ["glossy", "smooth"],
+      "mood": ["playful", "elegant"],
+      "sustainability": ["vegan", "recycled"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 4.5,
+      "waterUsageLiters": 9,
+      "recycledContentPct": 30
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-017",
+    "name": "Saffron Cashmere Cardigan",
+    "price": 1580,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/17/600/800",
+    "materialComposition": [
+      { "material": "Cashmere", "percentage": 100 }
+    ],
+    "curatorSentence": "Warmth that feels like a sunrise over a saffron field.",
+    "provenance": "Scottish‑knit • 2025",
+    "aiTags": {
+      "texture": ["soft", "knitted"],
+      "mood": ["cozy", "timeless"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 9.8,
+      "waterUsageLiters": 27,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-018",
+    "name": "Midnight Sapphire Ring",
+    "price": 7200,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/18/600/800",
+    "materialComposition": [
+      { "material": "Recycled Gold", "percentage": 90 },
+      { "material": "Sapphire", "percentage": 10 }
+    ],
+    "curatorSentence": "A deep‑blue sapphire set in responsibly sourced gold.",
+    "provenance": "Swiss‑crafted • 2025",
+    "aiTags": {
+      "texture": ["metallic", "smooth"],
+      "mood": ["luxurious", "dramatic"],
+      "sustainability": ["recycled", "fair‑trade"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 12.0,
+      "waterUsageLiters": 5,
+      "recycledContentPct": 90
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-019",
+    "name": "Obsidian Velvet Cap",
+    "price": 340,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/19/600/800",
+    "materialComposition": [
+      { "material": "Velvet", "percentage": 100 }
+    ],
+    "curatorSentence": "A cap that adds a touch of night‑time mystery.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["velvet", "soft"],
+      "mood": ["edgy", "playful"],
+      "sustainability": ["low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 5.6,
+      "waterUsageLiters": 12,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-020",
+    "name": "Gold‑Threaded Silk Pocket Square",
+    "price": 210,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/20/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 95 },
+      { "material": "Gold Thread", "percentage": 5 }
+    ],
+    "curatorSentence": "A whisper of gold that catches the light in a pocket.",
+    "provenance": "French‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["elegant", "playful"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 3.9,
+      "waterUsageLiters": 18,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-021",
+    "name": "Sable Fur Gloves",
+    "price": 680,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/21/600/800",
+    "materialComposition": [
+      { "material": "Recycled Faux Fur", "percentage": 100 }
+    ],
+    "curatorSentence": "Gloves that feel like a soft, dark cloud on your hands.",
+    "provenance": "Polish‑crafted • 2025",
+    "aiTags": {
+      "texture": ["fluffy", "soft"],
+      "mood": ["cozy", "sophisticated"],
+      "sustainability": ["vegan", "recycled"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 6.2,
+      "waterUsageLiters": 16,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-022",
+    "name": "Obsidian Leather Backpack",
+    "price": 2740,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/22/600/800",
+    "materialComposition": [
+      { "material": "Recycled Leather", "percentage": 100 }
+    ],
+    "curatorSentence": "A sleek backpack that carries both style and conscience.",
+    "provenance": "German‑crafted • 2025",
+    "aiTags": {
+      "texture": ["matte", "smooth"],
+      "mood": ["minimalist", "edgy"],
+      "sustainability": ["recycled", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 11.3,
+      "waterUsageLiters": 30,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-023",
+    "name": "Ivory Silk Slip Dress",
+    "price": 3120,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/23/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 100 }
+    ],
+    "curatorSentence": "A flowing silhouette that glides like a quiet tide.",
+    "provenance": "Italian‑couture • 2025",
+    "aiTags": {
+      "texture": ["silky", "light"],
+      "mood": ["romantic", "timeless"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 8.9,
+      "waterUsageLiters": 35,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-024",
+    "name": "Gold‑Threaded Velvet Headscarf",
+    "price": 560,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/24/600/800",
+    "materialComposition": [
+      { "material": "Velvet", "percentage": 95 },
+      { "material": "Gold Thread", "percentage": 5 }
+    ],
+    "curatorSentence": "A headscarf that drapes like liquid gold.",
+    "provenance": "French‑couture • 2025",
+    "aiTags": {
+      "texture": ["velvet", "soft"],
+      "mood": ["luxurious", "dramatic"],
+      "sustainability": ["low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 9.4,
+      "waterUsageLiters": 40,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-025",
+    "name": "Saffron Silk Trousers",
+    "price": 1380,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/25/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 100 }
+    ],
+    "curatorSentence": "Tailored silk that moves like sunrise on water.",
+    "provenance": "Italian‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["elegant", "minimalist"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 6.7,
+      "waterUsageLiters": 28,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-026",
+    "name": "Obsidian Suede Cap",
+    "price": 290,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/26/600/800",
+    "materialComposition": [
+      { "material": "Recycled Suede", "percentage": 100 }
+    ],
+    "curatorSentence": "A cap that adds a subtle edge to any street look.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["suede", "soft"],
+      "mood": ["edgy", "street‑wear"],
+      "sustainability": ["recycled", "vegan"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 5.1,
+      "waterUsageLiters": 13,
+      "recycledContentPct": 100
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-027",
+    "name": "Pearl‑Laced Silk Belt",
+    "price": 480,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/27/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 95 },
+      { "material": "Pearl", "percentage": 5 }
+    ],
+    "curatorSentence": "A belt that cinches with a whisper of pearls.",
+    "provenance": "French‑artisan • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["elegant", "playful"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 4.2,
+      "waterUsageLiters": 20,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-028",
+    "name": "Midnight Velvet Evening Bag",
+    "price": 2120,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/28/600/800",
+    "materialComposition": [
+      { "material": "Velvet", "percentage": 80 },
+      { "material": "Recycled Leather", "percentage": 20 }
+    ],
+    "curatorSentence": "A bag that holds the night in its folds.",
+    "provenance": "Italian‑crafted • 2025",
+    "aiTags": {
+      "texture": ["velvet", "soft"],
+      "mood": ["dramatic", "luxurious"],
+      "sustainability": ["recycled", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 10.8,
+      "waterUsageLiters": 32,
+      "recycledContentPct": 20
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-029",
+    "name": "Gold‑Threaded Silk Tie",
+    "price": 410,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/29/600/800",
+    "materialComposition": [
+      { "material": "Silk", "percentage": 92 },
+      { "material": "Gold Thread", "percentage": 8 }
+    ],
+    "curatorSentence": "A tie that adds a golden thread of confidence.",
+    "provenance": "Italian‑woven • 2025",
+    "aiTags": {
+      "texture": ["silky", "smooth"],
+      "mood": ["elegant", "minimalist"],
+      "sustainability": ["organic"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 5.3,
+      "waterUsageLiters": 24,
+      "recycledContentPct": 0
+    }
+  },
+
+  {
+    "sku": "MVB-2025-BLZ-030",
+    "name": "Obsidian Leather Slip‑On Shoes",
+    "price": 1650,
+    "currency": "USD",
+    "image": "https://picsum.photos/seed/30/600/800",
+    "materialComposition": [
+      { "material": "Recycled Leather", "percentage": 100 }
+    ],
+    "curatorSentence": "Effortless slip‑ons that whisper luxury with every step.",
+    "provenance": "German‑crafted • 2025",
+    "aiTags": {
+      "texture": ["matte", "smooth"],
+      "mood": ["minimalist", "edgy"],
+      "sustainability": ["recycled", "low‑water"]
+    },
+    "sustainabilityMetrics": {
+      "carbonFootprintKgCO2e": 9.0,
+      "waterUsageLiters": 18,
+      "recycledContentPct": 100
+    }
+  }
+]
